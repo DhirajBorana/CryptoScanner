@@ -25,10 +25,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.scanBtcBtn.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavCamera())
+            findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavCamera(CryptoType.BTC))
         }
         binding.scanEthBtn.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavCamera())
+            findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavCamera(CryptoType.ETH))
         }
     }
 }

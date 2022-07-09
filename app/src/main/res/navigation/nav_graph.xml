@@ -18,6 +18,10 @@
         android:id="@+id/nav_camera"
         android:name="com.example.cryptoscanner.CameraFragment"
         android:label="Camera"
-        tools:layout="@layout/fragment_camera" />
+        tools:layout="@layout/fragment_camera" >
+        <argument
+            android:name="cryptoType"
+            app:argType="com.example.cryptoscanner.CryptoType" />
+    </fragment>
 
 </navigation>
