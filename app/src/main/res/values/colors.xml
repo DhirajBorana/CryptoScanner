@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bitcoin_background">#FFF2A900</color>
+    <color name="bitcoin_foreground">#FF4D4D4E</color>
+
+    <color name="ethereum_background">#FF215CAF</color>
+    <color name="ethereum_foreground">#FFFFFFFF</color>
+
 </resources>
