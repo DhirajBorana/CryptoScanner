@@ -49,7 +49,7 @@ class ValidateFragment : Fragment() {
     }
 
     private fun isValidBitcoinAddress(address: String): Boolean {
-        return Pattern.matches("^[1][a-zA-HJ-KM-NP-Z1-9]{25,34}$", address)
+        return Pattern.matches("^[1][a-km-zA-HJ-NP-Z1-9]{25,34}$", address)
     }
 
     private fun isValidEthereumAddress(address: String): Boolean {
