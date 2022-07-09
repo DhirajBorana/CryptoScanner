@@ -22,12 +22,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.cryptoscanner.databinding.FragmentCameraBinding
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.math.log
 
 class CameraFragment : Fragment() {
 
@@ -35,6 +35,7 @@ class CameraFragment : Fragment() {
     private lateinit var binding: FragmentCameraBinding
     private lateinit var cameraExecutor: ExecutorService
     private val viewModel: CameraViewModel by viewModels()
+    private val args: CameraFragmentArgs by navArgs()
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -76,8 +77,9 @@ class CameraFragment : Fragment() {
 
     private fun observeScannedAddress() {
         lifecycleScope.launch {
-            viewModel.scannedAddress.collectLatest {
-                //  TODO: Navigate to validation screen
+            viewModel.scannedAddress.first {
+                findNavController().navigate(CameraFragmentDirections.actionNavCameraToNavValidate(args.cryptoType, it))
+                true
             }
         }
     }
