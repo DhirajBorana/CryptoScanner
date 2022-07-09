@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Crypto Scanner</string>
+    <string name="bitcoin_label">Bitcoin</string>
+    <string name="ethereum_label">Ethereum</string>
 </resources>
