@@ -6,4 +6,9 @@
         <item name="iconGravity">textStart</item>
     </style>
 
+    <style name="Widget.CryptoScanner.TextButton.Icon" parent="Widget.Material3.Button.TextButton.Icon">
+        <item name="textAllCaps">true</item>
+        <item name="iconGravity">textEnd</item>
+    </style>
+
 </resources>

@@ -2,4 +2,6 @@
     <string name="app_name">Crypto Scanner</string>
     <string name="bitcoin_label">Bitcoin</string>
     <string name="ethereum_label">Ethereum</string>
+    <string name="open_settings_label">Open Settings</string>
+    <string name="camera_permission_denied_info">Go to settings and enable camera permission to use this feature</string>
 </resources>

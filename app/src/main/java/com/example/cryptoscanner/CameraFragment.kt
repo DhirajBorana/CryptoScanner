@@ -3,6 +3,7 @@ package com.example.cryptoscanner
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +22,7 @@ class CameraFragment : Fragment() {
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             val granted = permissions.entries.all { it.value }
-            if (granted) {
-                //TODO: Open Camera
-            }
+            if (granted) startCamera()
             else {
                 val showRationale = REQUIRED_PERMISSIONS.map {
                     ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), it)
@@ -32,11 +31,28 @@ class CameraFragment : Fragment() {
                     Toast.makeText(requireContext(), "Camera permission required to scan QR code", Toast.LENGTH_SHORT)
                         .show()
                     findNavController().navigateUp()
-                } else {
-                    // TODO: Show Permission Denied Permanently Layout
-                }
+                } else showCameraPermissionDeniedLayout()
             }
         }
+
+    private fun startCamera() {
+        showCameraLayout()
+        // TODO: Open Camera
+    }
+
+    private fun showCameraLayout() {
+        binding.apply {
+            cameraLayout.root.visibility = View.VISIBLE
+            cameraPermissionDeniedLayout.root.visibility = View.GONE
+        }
+    }
+
+    private fun showCameraPermissionDeniedLayout() {
+        binding.apply {
+            cameraLayout.root.visibility = View.GONE
+            cameraPermissionDeniedLayout.root.visibility = View.VISIBLE
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +66,7 @@ class CameraFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         when {
-            allPermissionsGranted() -> {} // TODO: Start Camera
+            allPermissionsGranted() ->  startCamera()
             else -> requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
         }
     }
