@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.cryptoscanner.databinding.FragmentValidateBinding
-import java.util.regex.Pattern
 
 class ValidateFragment : Fragment() {
 
     private lateinit var binding: FragmentValidateBinding
     private val args: ValidateFragmentArgs by navArgs()
+    private val cryptoHelper: ICryptoHelper by lazy { CryptoHelper() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +32,7 @@ class ValidateFragment : Fragment() {
     }
 
     private fun shareAddressIfValid() {
-        if (isValidCryptoAddress(args.address)) {
+        if (validateAddress()) {
             val intent = Intent(Intent.ACTION_SEND).also {
                 it.type = "text/plain"
                 it.putExtra(Intent.EXTRA_TEXT, args.address)
@@ -43,9 +43,10 @@ class ValidateFragment : Fragment() {
         }
     }
 
-    private fun validateAddress() {
-        val isValid = isValidCryptoAddress(args.address)
+    private fun validateAddress(): Boolean {
+        val isValid = cryptoHelper.isValidCryptoAddress(args.address, args.cryptoType)
         showValidationText(isValid)
+        return isValid
     }
 
     private fun showValidationText(isValid: Boolean) {
@@ -55,20 +56,5 @@ class ValidateFragment : Fragment() {
             text = getString(textResId, args.cryptoType.toString())
             setTextColor(resources.getColor(textColorResId, context?.theme))
         }
-    }
-
-    private fun isValidCryptoAddress(address: String): Boolean {
-        return when (args.cryptoType) {
-            CryptoType.ETH -> isValidEthereumAddress(address)
-            CryptoType.BTC -> isValidBitcoinAddress(address)
-        }
-    }
-
-    private fun isValidBitcoinAddress(address: String): Boolean {
-        return Pattern.matches("^[1][a-km-zA-HJ-NP-Z1-9]{25,34}$", address)
-    }
-
-    private fun isValidEthereumAddress(address: String): Boolean {
-        return Pattern.matches("^[0x][0-9a-f]$", address)
     }
 }
