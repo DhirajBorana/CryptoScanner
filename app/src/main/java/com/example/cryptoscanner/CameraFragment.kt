@@ -19,9 +19,11 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.cryptoscanner.databinding.FragmentCameraBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -32,6 +34,7 @@ class CameraFragment : Fragment() {
     private val TAG = "CameraFragment"
     private lateinit var binding: FragmentCameraBinding
     private lateinit var cameraExecutor: ExecutorService
+    private val viewModel: CameraViewModel by viewModels()
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -64,8 +67,18 @@ class CameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        observeScannedAddress()
         binding.cameraPermissionDeniedLayout.openSettingsBtn.setOnClickListener { openSettingsPage() }
         cameraExecutor = Executors.newSingleThreadExecutor()
+    }
+
+    private fun observeScannedAddress() {
+        lifecycleScope.launch {
+            viewModel.scannedAddress.collectLatest {
+                //  TODO: Navigate to validation screen
+            }
+        }
     }
 
     private fun startCamera() {
@@ -82,7 +95,7 @@ class CameraFragment : Fragment() {
                 .build()
                 .also {
                     it.setAnalyzer(cameraExecutor, QRCodeAnalyzer {
-                        // TODO: store scanned address
+                        lifecycleScope.launch { viewModel.setScannedAddress(it) }
                     })
                 }
             try {
