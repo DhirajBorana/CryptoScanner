@@ -9,5 +9,6 @@
 
     <string name="valid_address">Valid %1$s Address</string>
     <string name="invalid_address">Invalid %1$s Address</string>
+    <string name="share_using">Share using</string>
 
 </resources>

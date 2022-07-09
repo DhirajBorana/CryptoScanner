@@ -1,10 +1,12 @@
 package com.example.cryptoscanner
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.cryptoscanner.databinding.FragmentValidateBinding
 import java.util.regex.Pattern
@@ -26,6 +28,19 @@ class ValidateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.cryptoAddressTv.text = args.address
         binding.validateBtn.setOnClickListener { validateAddress() }
+        binding.shareBtn.setOnClickListener { shareAddressIfValid() }
+    }
+
+    private fun shareAddressIfValid() {
+        if (isValidCryptoAddress(args.address)) {
+            val intent = Intent(Intent.ACTION_SEND).also {
+                it.type = "text/plain"
+                it.putExtra(Intent.EXTRA_TEXT, args.address)
+            }
+            startActivity(Intent.createChooser(intent, getString(R.string.share_using)))
+        } else {
+            Toast.makeText(context, "Invalid address cannot be shared", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun validateAddress() {
