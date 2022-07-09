@@ -8,6 +8,7 @@ import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
 
+// reference link -> https://www.youtube.com/watch?v=asl1mFtkMkc
 class QRCodeAnalyzer(
     private val listener: (String) -> Unit
 ) : ImageAnalysis.Analyzer {

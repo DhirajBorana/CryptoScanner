@@ -38,6 +38,7 @@ class CameraFragment : Fragment() {
     private val viewModel: CameraViewModel by viewModels()
     private val args: CameraFragmentArgs by navArgs()
 
+    // reference link -> https://dtuto.com/questions/200/onrequestpermissionsresult-is-deprecated-and-its-alternative
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             val granted = permissions.entries.all { it.value }
@@ -85,6 +86,7 @@ class CameraFragment : Fragment() {
         }
     }
 
+    // reference link (Google CodeLab)-> https://developer.android.com/codelabs/camerax-getting-started
     private fun startCamera() {
         showCameraLayout()
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
