@@ -24,7 +24,8 @@
             app:argType="com.example.cryptoscanner.CryptoType" />
         <action
             android:id="@+id/action_nav_camera_to_nav_validate"
-            app:destination="@id/nav_validate" />
+            app:destination="@id/nav_validate"
+            app:popUpTo="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/nav_validate"
