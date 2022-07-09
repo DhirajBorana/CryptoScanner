@@ -9,4 +9,7 @@
     <color name="ethereum_background">#FF215CAF</color>
     <color name="ethereum_foreground">#FFFFFFFF</color>
 
+    <color name="invalid_address">#FFFF7043</color>
+    <color name="valid_address">#FF018786</color>
+
 </resources>

@@ -25,7 +25,20 @@ class ValidateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cryptoAddressTv.text = args.address
-        binding.validateBtn.setOnClickListener { isValidCryptoAddress(args.address) }
+        binding.validateBtn.setOnClickListener { validateAddress() }
+    }
+
+    private fun validateAddress() {
+        val isValid = isValidCryptoAddress(args.address)
+        showValidationText(isValid)
+    }
+
+    private fun showValidationText(isValid: Boolean) {
+        val textColorResId = if (isValid) R.color.valid_address else R.color.invalid_address
+        binding.validationTv.apply {
+            text = if (isValid) "Valid Address" else "Invalid Address"
+            setTextColor(resources.getColor(textColorResId, context?.theme))
+        }
     }
 
     private fun isValidCryptoAddress(address: String): Boolean {
