@@ -63,6 +63,7 @@ class CameraFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         if (!allPermissionsGranted()) requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
+        else startCamera()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
