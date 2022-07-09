@@ -16,6 +16,6 @@ class CryptoHelper : ICryptoHelper {
     }
 
     override fun isValidEthereumAddress(address: String): Boolean {
-        return Pattern.matches("^[0x][0-9a-f]$", address)
+        return Pattern.matches("^0x[0-9a-f]*$", address)
     }
 }
