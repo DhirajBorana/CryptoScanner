@@ -1,5 +1,6 @@
-package com.example.cryptoscanner
+package com.example.cryptoscanner.utils
 
+import com.example.cryptoscanner.CryptoType
 import java.util.regex.Pattern
 
 class CryptoHelper : ICryptoHelper {

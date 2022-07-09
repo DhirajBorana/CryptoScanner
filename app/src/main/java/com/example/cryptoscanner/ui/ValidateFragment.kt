@@ -1,4 +1,4 @@
-package com.example.cryptoscanner
+package com.example.cryptoscanner.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
+import com.example.cryptoscanner.utils.CryptoHelper
+import com.example.cryptoscanner.utils.ICryptoHelper
+import com.example.cryptoscanner.R
 import com.example.cryptoscanner.databinding.FragmentValidateBinding
 
 class ValidateFragment : Fragment() {

@@ -1,5 +1,7 @@
 package com.example.cryptoscanner
 
+import com.example.cryptoscanner.utils.CryptoHelper
+import com.example.cryptoscanner.utils.ICryptoHelper
 import org.junit.Assert.*
 
 import org.junit.Before

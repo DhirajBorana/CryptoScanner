@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.cryptoscanner.HomeFragment"
+        android:name="com.example.cryptoscanner.ui.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_camera"
-        android:name="com.example.cryptoscanner.CameraFragment"
+        android:name="com.example.cryptoscanner.ui.CameraFragment"
         android:label="Camera"
         tools:layout="@layout/fragment_camera">
         <argument
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_validate"
-        android:name="com.example.cryptoscanner.ValidateFragment"
+        android:name="com.example.cryptoscanner.ui.ValidateFragment"
         android:label="Validate"
         tools:layout="@layout/fragment_validate">
         <argument

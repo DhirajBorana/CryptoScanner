@@ -1,4 +1,4 @@
-package com.example.cryptoscanner
+package com.example.cryptoscanner.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

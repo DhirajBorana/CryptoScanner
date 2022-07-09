@@ -1,4 +1,6 @@
-package com.example.cryptoscanner
+package com.example.cryptoscanner.utils
+
+import com.example.cryptoscanner.CryptoType
 
 interface ICryptoHelper {
     fun isValidCryptoAddress(address: String, cryptoType: CryptoType): Boolean

@@ -1,4 +1,4 @@
-package com.example.cryptoscanner
+package com.example.cryptoscanner.ui
 
 import android.Manifest
 import android.content.Intent
@@ -23,6 +23,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.cryptoscanner.QRCodeAnalyzer
 import com.example.cryptoscanner.databinding.FragmentCameraBinding
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

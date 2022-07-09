@@ -1,4 +1,4 @@
-package com.example.cryptoscanner
+package com.example.cryptoscanner.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.cryptoscanner.CryptoType
 import com.example.cryptoscanner.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
