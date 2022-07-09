@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.example.cryptoscanner.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_nav_camera"
             app:destination="@id/nav_camera" />
@@ -18,10 +18,25 @@
         android:id="@+id/nav_camera"
         android:name="com.example.cryptoscanner.CameraFragment"
         android:label="Camera"
-        tools:layout="@layout/fragment_camera" >
+        tools:layout="@layout/fragment_camera">
         <argument
             android:name="cryptoType"
             app:argType="com.example.cryptoscanner.CryptoType" />
+        <action
+            android:id="@+id/action_nav_camera_to_nav_validate"
+            app:destination="@id/nav_validate" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_validate"
+        android:name="com.example.cryptoscanner.ValidateFragment"
+        android:label="Validate"
+        tools:layout="@layout/fragment_validate">
+        <argument
+            android:name="cryptoType"
+            app:argType="com.example.cryptoscanner.CryptoType" />
+        <argument
+            android:name="address"
+            app:argType="string" />
     </fragment>
 
 </navigation>
