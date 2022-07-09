@@ -34,9 +34,10 @@ class ValidateFragment : Fragment() {
     }
 
     private fun showValidationText(isValid: Boolean) {
+        val textResId = if (isValid) R.string.valid_address else R.string.invalid_address
         val textColorResId = if (isValid) R.color.valid_address else R.color.invalid_address
         binding.validationTv.apply {
-            text = if (isValid) "Valid Address" else "Invalid Address"
+            text = getString(textResId, args.cryptoType.toString())
             setTextColor(resources.getColor(textColorResId, context?.theme))
         }
     }
