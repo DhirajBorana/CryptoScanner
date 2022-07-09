@@ -9,6 +9,15 @@
         android:id="@+id/nav_home"
         android:name="com.example.cryptoscanner.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_camera"
+            app:destination="@id/nav_camera" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="com.example.cryptoscanner.CameraFragment"
+        android:label="Camera"
+        tools:layout="@layout/fragment_camera" />
 
 </navigation>
